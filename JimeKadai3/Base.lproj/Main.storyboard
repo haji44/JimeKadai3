@@ -45,9 +45,6 @@
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="37M-GB-TeM">
                                                                 <rect key="frame" x="35" y="0.0" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="leftSwitchToggle:" destination="zMo-IG-4vQ" eventType="valueChanged" id="N4K-XO-2hI"/>
-                                                                </connections>
                                                             </switch>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eNl-Nk-St9">
                                                                 <rect key="frame" x="105" y="0.0" width="10.5" height="31"/>
@@ -82,9 +79,6 @@
                                                             </label>
                                                             <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" horizontalCompressionResistancePriority="751" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="71E-Kh-L4v">
                                                                 <rect key="frame" x="35" y="0.0" width="51" height="31"/>
-                                                                <connections>
-                                                                    <action selector="rightSwitchToggle:" destination="zMo-IG-4vQ" eventType="valueChanged" id="1ky-oZ-DAX"/>
-                                                                </connections>
                                                             </switch>
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="-" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FX9-ZI-M5m">
                                                                 <rect key="frame" x="105" y="0.0" width="10.5" height="31"/>
@@ -102,23 +96,19 @@
                                         <rect key="frame" x="120" y="246.5" width="67" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Button"/>
-                                        <connections>
-                                            <action selector="calcurateButtonTapped:" destination="zMo-IG-4vQ" eventType="touchUpInside" id="wbg-eD-3rN"/>
-                                        </connections>
                                     </button>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="44l-zI-TYw">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="44l-zI-TYw">
                                         <rect key="frame" x="130" y="338.5" width="47.5" height="20.5"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="69" translatesAutoresizingMaskIntoConstraints="NO" id="Enw-D0-P4b">
-                                        <rect key="frame" x="27" y="181.5" width="253" height="29"/>
+                                        <rect key="frame" x="42" y="181.5" width="223" height="29"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gcJ-2h-gKJ">
-                                                <rect key="frame" x="0.0" y="0.0" width="50" height="29"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Left" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gcJ-2h-gKJ">
+                                                <rect key="frame" x="0.0" y="0.0" width="30" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="Zrf-zk-PRV"/>
                                                     <constraint firstAttribute="height" constant="29" id="syE-U6-bWo"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -126,15 +116,14 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="+" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fly-PL-7YW">
-                                                <rect key="frame" x="119" y="0.0" width="15" height="29"/>
+                                                <rect key="frame" x="99" y="0.0" width="15" height="29"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="24"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ho2-q9-BLE">
-                                                <rect key="frame" x="203" y="0.0" width="50" height="29"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Right" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Ho2-q9-BLE">
+                                                <rect key="frame" x="183" y="0.0" width="40" height="29"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="50" id="dug-IP-pof"/>
                                                     <constraint firstAttribute="height" constant="29" id="x8a-bq-3fy"/>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -167,13 +156,14 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="leftInputLabel" destination="gcJ-2h-gKJ" id="Jm1-6e-Tex"/>
-                        <outlet property="leftSwitch" destination="37M-GB-TeM" id="nZX-Ya-kTv"/>
-                        <outlet property="leftTextField" destination="Qg7-ZC-Soy" id="BAj-3u-Rfn"/>
-                        <outlet property="resultLabel" destination="44l-zI-TYw" id="L4u-Eq-B0X"/>
-                        <outlet property="rightInputLabel" destination="Ho2-q9-BLE" id="x67-w1-eKm"/>
-                        <outlet property="rightSwtich" destination="71E-Kh-L4v" id="a5b-Jd-EY8"/>
-                        <outlet property="rightTextField" destination="FOP-Jb-klQ" id="PPy-e1-DZ0"/>
+                        <outlet property="calcuratorButton" destination="HZP-cU-DTK" id="VnE-YI-PR2"/>
+                        <outlet property="leftLabel" destination="gcJ-2h-gKJ" id="E56-pm-Gzd"/>
+                        <outlet property="leftSwitch" destination="37M-GB-TeM" id="e6v-WV-aPc"/>
+                        <outlet property="leftTextField" destination="Qg7-ZC-Soy" id="fxA-EH-vb0"/>
+                        <outlet property="resultLabel" destination="44l-zI-TYw" id="93z-O0-ujn"/>
+                        <outlet property="rightLabel" destination="Ho2-q9-BLE" id="F93-xz-nfZ"/>
+                        <outlet property="rightSwtich" destination="71E-Kh-L4v" id="oaW-aW-7vm"/>
+                        <outlet property="rightTextField" destination="FOP-Jb-klQ" id="ba7-gp-HgN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CvV-rp-vXV" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
