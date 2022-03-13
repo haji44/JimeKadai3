@@ -7,67 +7,76 @@
 
 import UIKit
 import Combine
+import CombineCocoa
 
 class ViewController: UIViewController {
+    private var subscriptions = Set<AnyCancellable>()
 
-    @IBOutlet private weak var leftTextField: UITextField!
-    @IBOutlet private weak var rightTextField: UITextField!
-    @IBOutlet private weak var leftInputLabel: UILabel!
-    @IBOutlet private weak var rightInputLabel: UILabel!
-    @IBOutlet private weak var resultLabel: UILabel!
-    @IBOutlet private weak var leftSwitch: UISwitch!
-    @IBOutlet private weak var rightSwtich: UISwitch!
+    @IBOutlet weak private var leftTextField: UITextField!
+    @IBOutlet weak private var leftSwitch: UISwitch!
+    @IBOutlet weak private var leftLabel: UILabel!
+    @IBOutlet weak private var rightTextField: UITextField!
+    @IBOutlet weak private var rightSwtich: UISwitch!
+    @IBOutlet weak private var rightLabel: UILabel!
+    @IBOutlet weak private var calcuratorButton: UIButton!
+    @IBOutlet weak private var resultLabel: UILabel!
 
-    private var leftValue: Int = 0
-    private var rightValue: Int = 0
+    private var leftNumberSubject = CurrentValueSubject<Int, Never>(0)
+    private var leftSwitchSubject = CurrentValueSubject<Bool, Never>(false)
+    private var leftNumberPublisher: AnyPublisher<Int, Never> {
+        leftNumberSubject.combineLatest(leftSwitchSubject)
+            .map { value, isOn in isOn ? value * -1 : abs(value) }
+            .eraseToAnyPublisher()
+    }
+
+    private var rightNumberSubject = CurrentValueSubject<Int, Never>(0)
+    private var rightSwitchSubject = CurrentValueSubject<Bool, Never>(false)
+    private var rigthtNumberPublisher: AnyPublisher<Int, Never> {
+        rightNumberSubject.combineLatest(rightSwitchSubject)
+            .map { value, isOn in isOn ? value * -1 : abs(value) }
+            .eraseToAnyPublisher()
+    }
+
+    private var resultPublisher: AnyPublisher<String, Never> {
+        leftNumberPublisher.combineLatest(rigthtNumberPublisher)
+            .map { String($0 + $1) }
+            .eraseToAnyPublisher()
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        configureSwitch()
+        // MARK: - Left
+        leftTextField.textPublisher.map { Int($0 ?? "") ?? 0 }
+        .sink { self.leftNumberSubject.send($0) }
+        .store(in: &subscriptions)
+
+        leftSwitch.isOnPublisher.sink { self.leftSwitchSubject.send($0) }
+        .store(in: &subscriptions)
+
+        leftNumberPublisher.map { String($0) }
+        .assign(to: \.text, on: leftLabel).store(in: &subscriptions)
+
+        // MARK: - Right
+        rightTextField.textPublisher.map { Int($0 ?? "") ?? 0 }
+        .sink { self.rightNumberSubject.send($0) }
+        .store(in: &subscriptions)
+
+        rightSwtich.isOnPublisher.sink { self.rightSwitchSubject.send($0) }
+        .store(in: &subscriptions)
+
+        rigthtNumberPublisher.compactMap { String($0) }
+        .assign(to: \.text, on: rightLabel)
+        .store(in: &subscriptions)
+
+        // MARK: - Button
+        calcuratorButton.tapPublisher.sink {
+            self.resultPublisher.assign(to: \.text!, on: self.resultLabel)
+        }.store(in: &subscriptions)
+    }
+
+    private func configureSwitch() {
         leftSwitch.isOn = false
         rightSwtich.isOn = false
-        leftTextField.addTarget(self, action: #selector(leftTextFieldDidChange), for: .editingChanged)
-        rightTextField.addTarget(self, action: #selector(rightTextFieldDidChange), for: .editingChanged)
-    }
-
-    @objc func leftTextFieldDidChange(textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        leftInputLabel.text = text
-        leftValue = Int(text) ?? 0
-    }
-    @objc func textFieldDidChange(textField: UITextField, label: UILabel, value: Int) {
-        guard let text = textField.text else {
-            return
-        }
-        var value = value
-        leftInputLabel.text = text
-        value = Int(text) ?? 0
-    }
-
-
-
-    @objc func rightTextFieldDidChange(textField: UITextField) {
-        guard let text = textField.text else {
-            return
-        }
-        rightInputLabel.text = text
-        rightValue = Int(text) ?? 0
-    }
-
-    @IBAction func leftSwitchToggle(_ sender: UISwitch) {
-        leftValue = sender.isOn ? leftValue * -1 : abs(leftValue)
-        leftInputLabel.text = "\(leftValue)"
-    }
-
-    @IBAction func rightSwitchToggle(_ sender: UISwitch) {
-        rightValue = sender.isOn ? rightValue * -1 : abs(rightValue)
-        rightInputLabel.text = "\(rightValue)"
-    }
-
-    @IBAction func calcurateButtonTapped(_ sender: UIButton) {
-        let result = rightValue + leftValue
-        resultLabel.text = "\(result)"
     }
 }
-
