@@ -70,9 +70,15 @@ class ViewController: UIViewController {
         .store(in: &subscriptions)
 
         // MARK: - Button
-        calcuratorButton.tapPublisher.sink {
-            self.resultPublisher.assign(to: \.text!, on: self.resultLabel)
-        }.store(in: &subscriptions)
+
+        // Ref: ios - Swift Combine operator with same functionality like `withLatestFrom` in the RxSwift Framework - Stack Overflow
+        // https://stackoverflow.com/questions/61959647/swift-combine-operator-with-same-functionality-like-withlatestfrom-in-the-rxsw
+
+        calcuratorButton.tapPublisher.map { _ in Date() }.combineLatest(resultPublisher)
+            .removeDuplicates(by: { $0.0 == $1.0 })
+            .map { $0.1 }
+            .assign(to: \.text, on: resultLabel)
+            .store(in: &subscriptions)
     }
 
     private func configureSwitch() {
