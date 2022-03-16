@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zMo-IG-4vQ">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zMo-IG-4vQ">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -96,6 +96,9 @@
                                         <rect key="frame" x="120" y="246.5" width="67" height="31"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="tinted" title="Button"/>
+                                        <connections>
+                                            <action selector="calcurateButton:" destination="zMo-IG-4vQ" eventType="touchUpInside" id="Goe-eP-xO1"/>
+                                        </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Result" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="44l-zI-TYw">
                                         <rect key="frame" x="130" y="338.5" width="47.5" height="20.5"/>
@@ -156,7 +159,6 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="calcuratorButton" destination="HZP-cU-DTK" id="VnE-YI-PR2"/>
                         <outlet property="leftLabel" destination="gcJ-2h-gKJ" id="E56-pm-Gzd"/>
                         <outlet property="leftSwitch" destination="37M-GB-TeM" id="e6v-WV-aPc"/>
                         <outlet property="leftTextField" destination="Qg7-ZC-Soy" id="fxA-EH-vb0"/>
