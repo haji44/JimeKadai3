@@ -3,5 +3,7 @@
 
 Combine ver
 
+Using CombineCocoa\
+![](https://github.com/haji44/JimeKadai3/tree/CombineCocoa)
 
-Normal ve
+
